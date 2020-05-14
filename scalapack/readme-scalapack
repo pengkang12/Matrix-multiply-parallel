@@ -1,0 +1,44 @@
+1. download scalapack
+down linux version for general machine. 
+
+1.1 enter BLAC directory
+
+make
+
+2. make
+
+cp SLmake.inc.example SLmake.inc
+
+3. install blas and lapack
+
+```
+sudo apt-get install libblas-dev liblapack-dev
+```
+
+if you want to compile blas by yourself.
+
+download blas-linux.tar.gz
+
+cp Bmake.inc from Bmake/Bmake.inc-linux
+pay attention, edit Bmake.inc:
+
+1. g77 maybe doesn't work. change g77 to gfortran.
+
+2. setting mpich lib, if you use apt install mpich,then be careful this part
+```
+   MPIdir = /usr/include/mpich
+   MPILIBdir = /usr/lib/mpich/lib
+   MPIINCdir = $(MPIdir)
+   MPILIB = $(MPILIBdir)/libmpich.a
+```
+
+
+4. make
+
+make exe
+
+make example
+
+5. check 
+enter to example
+mpirun -np 4 ./xcscaex
